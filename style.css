@@ -1,5 +1,5 @@
 /* =========================================================
-   М. Максимович Наукова бібліотека — стиль сайту
+   Сайт для бібліотеки — шаблон
    Концепція: "картка каталогу" — тепла палітра паперу,
    чорнильно-синій + бронза + бордо, серифний заголовний шрифт.
    ========================================================= */
@@ -440,4 +440,108 @@ footer.site-footer a:hover { text-decoration: underline; }
 :focus-visible {
   outline: 2px solid var(--color-brass);
   outline-offset: 2px;
+}
+
+/* ---------- Template / presentation additions ---------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-oxblood);
+  background: rgba(122, 46, 46, 0.07);
+  border: 1px solid rgba(122, 46, 46, 0.25);
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-oxblood);
+  display: inline-block;
+}
+
+.steps {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 860px) {
+  .steps { grid-template-columns: 1fr; }
+}
+
+.step {
+  position: relative;
+  padding-top: 8px;
+}
+
+.step .step-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 34px;
+  color: var(--color-brass-light);
+  -webkit-text-stroke: 1.5px var(--color-brass);
+  color: transparent;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.note-box {
+  background: rgba(156, 107, 48, 0.08);
+  border: 1px dashed var(--color-line-strong);
+  border-radius: 4px;
+  padding: 18px 20px;
+  font-size: 14.5px;
+  color: var(--color-ink-soft);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.note-box .note-icon {
+  font-family: var(--font-mono);
+  color: var(--color-brass);
+  flex: none;
+}
+
+.cta-band {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.cta-band .section-title,
+.cta-band p { color: var(--color-paper); }
+
+.cta-band p { color: #c8cdd6; }
+
+.stat-row {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.stat-row .stat-num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--color-ink);
+  display: block;
+}
+
+.stat-row .stat-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-ink-soft);
 }
