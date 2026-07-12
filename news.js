@@ -24,8 +24,20 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+// Повертає значення колонки навіть якщо в заголовку є зайві пробіли
+// або він написаний в іншому регістрі.
+function getField(row, name) {
+  const target = name.trim().toLowerCase();
+  for (const key in row) {
+    if (key.trim().toLowerCase() === target) {
+      return (row[key] || "").trim();
+    }
+  }
+  return "";
+}
+
 function renderNews(rows) {
-  const items = rows.filter((r) => (r["Назва"] || "").trim() !== "");
+  const items = rows.filter((r) => getField(r, "Назва") !== "");
 
   if (items.length === 0) {
     stateEl.textContent = "Поки що немає жодної новини.";
@@ -36,9 +48,9 @@ function renderNews(rows) {
 
   const html = items
     .map((row, i) => {
-      const title = escapeHtml(row["Назва"]);
-      const desc = escapeHtml(row["Опис"]);
-      const imgName = (row["Зображення"] || "").trim();
+      const title = escapeHtml(getField(row, "Назва"));
+      const desc = escapeHtml(getField(row, "Опис"));
+      const imgName = getField(row, "Зображення");
       const cardNo = String(i + 1).padStart(3, "0");
 
       const imageBlock = imgName
