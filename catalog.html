@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Демо: електронний каталог — Сайт для бібліотеки</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="catalog.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-seal">Б</span>
+      <span class="brand-text">
+        <span class="brand-title">Сайт для бібліотеки</span>
+        <span class="brand-sub">Готовий шаблон · без сервера</span>
+      </span>
+    </a>
+    <nav class="site-nav">
+      <a href="index.html">Головна</a>
+      <a href="features.html">Можливості</a>
+      <a href="how-it-works.html">Як це працює</a>
+      <a href="news.html">Демо: новини</a>
+      <a href="catalog.html" class="active">Демо: каталог</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:24px;">
+  <div class="wrap">
+    <span class="badge"><span class="dot"></span> Живе демо</span>
+    <h1 style="max-width: 24ch;">Електронний каталог — приклад роботи</h1>
+    <p class="lede">Картки видань нижче підвантажуються напряму з робочої таблиці бібліотеки. Клік по картці відкриває повний бібліографічний опис — зі стислим і детальним режимом перегляду.</p>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="wrap">
+    <div class="note-box" style="margin-bottom: 40px;">
+      <span class="note-icon">i</span>
+      <span>Джерело даних: та сама Google Таблиця, якою бібліотека вже веде облік видань — колонки ISBN, автор, назва, видання, рік, УДК, тематика тощо. Сайт читає її як CSV і сам формує каталожні картки, без окремої бази даних.</span>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title">Фонд бібліотеки</h2>
+      <span class="index" id="catalog-count"></span>
+    </div>
+
+    <div class="catalog-toolbar">
+      <input type="search" id="catalog-search" class="catalog-search" placeholder="Пошук за автором або назвою…">
+    </div>
+
+    <div id="catalog-state" class="news-state">Завантаження каталогу…</div>
+    <div id="catalog-grid" class="catalog-grid" hidden></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>Готовий сайт для бібліотек · розгортається на GitHub Pages</span>
+    <span><a href="news.html">Демо: новини</a> · <a href="features.html">Можливості</a> · <a href="index.html">Головна</a></span>
+  </div>
+</footer>
+
+<!-- Модальне вікно картки видання -->
+<div id="book-modal" class="modal-overlay" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" id="modal-close" aria-label="Закрити">✕</button>
+
+    <div class="modal-tabs">
+      <button class="modal-tab active" data-mode="simple">Стисло</button>
+      <button class="modal-tab" data-mode="detailed">Детально</button>
+    </div>
+
+    <h3 id="modal-title" class="modal-title"></h3>
+    <p id="modal-author" class="modal-author"></p>
+
+    <dl id="modal-body-simple" class="modal-fields"></dl>
+    <dl id="modal-body-detailed" class="modal-fields" hidden></dl>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="catalog.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+/* =========================================================
+   Стилі для демо-сторінки електронного каталогу
+   ========================================================= */
+
+.catalog-toolbar {
+  margin-bottom: 26px;
+}
+
+.catalog-search {
+  width: 100%;
+  max-width: 420px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 12px 16px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: 10px;
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+.catalog-search:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .catalog-grid { grid-template-columns: 1fr; }
+}
+
+.book-card {
+  text-align: left;
+  cursor: pointer;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  font: inherit;
+  color: inherit;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
+}
+
+.book-card:hover,
+.book-card:focus-visible {
+  box-shadow: 0 10px 28px rgba(20, 22, 26, 0.07);
+  transform: translateY(-2px);
+  border-color: var(--color-line-strong);
+  outline: none;
+}
+
+.book-card .book-spine {
+  width: 34px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-accent);
+  margin-bottom: 14px;
+}
+
+.book-card h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.book-card .book-author {
+  font-size: 14.5px;
+  color: var(--color-ink-soft);
+  margin-bottom: 12px;
+}
+
+.book-card .book-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--color-accent-dark);
+}
+
+.book-card .book-meta span {
+  background: var(--color-accent-soft);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+/* ---------- Modal ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 22, 26, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+}
+
+.modal-overlay[hidden] { display: none; }
+
+.modal-card {
+  position: relative;
+  background: var(--color-paper);
+  border-radius: 18px;
+  padding: 34px 32px 30px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(20, 22, 26, 0.25);
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-paper);
+  color: var(--color-ink-soft);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.modal-close:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+}
+
+.modal-tabs {
+  display: inline-flex;
+  gap: 2px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+  padding: 3px;
+  margin-bottom: 20px;
+}
+
+.modal-tab {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  background: transparent;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.modal-tab.active {
+  background: var(--color-paper);
+  color: var(--color-accent-dark);
+  box-shadow: 0 1px 4px rgba(20, 22, 26, 0.1);
+}
+
+.modal-title {
+  font-size: 24px;
+  margin-bottom: 6px;
+  padding-right: 30px;
+}
+
+.modal-author {
+  font-size: 15px;
+  color: var(--color-ink-soft);
+  margin-bottom: 22px;
+}
+
+.modal-fields {
+  margin: 0;
+}
+
+.modal-fields[hidden] { display: none; }
+
+.modal-fields .field-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 14px;
+  padding: 11px 0;
+  border-top: 1px solid var(--color-line);
+  font-size: 14.5px;
+}
+
+.modal-fields .field-row:first-child { border-top: none; }
+
+.modal-fields dt {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+  padding-top: 2px;
+}
+
+.modal-fields dd {
+  margin: 0;
+  color: var(--color-ink);
+}
+
+.modal-fields dd a {
+  color: var(--color-accent-dark);
+}
